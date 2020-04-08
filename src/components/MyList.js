@@ -5,16 +5,16 @@ import { jsx } from "theme-ui"
 const Panel = Collapse.Panel
 
 export default ({ children }) => {
+  // set all panels open by default
   const defaultActiveKeys = []
   children.forEach((item, index) => {
-    const num = index + 1
     let array = []
-    array.push(num.toString())
+    array.push(index.toString())
     defaultActiveKeys.push(array)
   })
 
   return (
-    <Collapse id="fuckface" defaultActiveKey={["1", "2"]}>
+    <Collapse defaultActiveKey={defaultActiveKeys}>
       {children.map(item => {
         const itemType = typeof item.props.children
         let header = []
@@ -34,9 +34,18 @@ export default ({ children }) => {
               return null
             }
           })
+        } else if (itemType === "string") {
+          // this is for cases in which the step has components (i.e. Key) && has children steps
+          return (
+            <Panel
+              header={<React.Fragment>{item.props.children}</React.Fragment>}
+              disabled
+            />
+          )
         }
 
         if (!newContent) {
+          // this is for cases in which the step has components (i.e. <Key />) but no children
           return (
             <Panel
               header={
@@ -49,6 +58,7 @@ export default ({ children }) => {
             />
           )
         } else if (newContent) {
+          // this is for cases in which the step has components (i.e. <Key />) and/or has children steps
           return (
             <Panel
               header={
