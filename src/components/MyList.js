@@ -19,6 +19,7 @@ export default ({ children }) => {
         const itemType = typeof item.props.children
         let header = []
         let content
+        let newContent
 
         if (itemType !== "string") {
           item.props.children.forEach(child => {
@@ -28,32 +29,44 @@ export default ({ children }) => {
               header.push(child)
             } else if (child.props.mdxType === "ul") {
               content = child
+              newContent = content.props.children.props.children
             } else {
               return null
             }
           })
         }
 
-        const newContent = content.props.children.props.children
-
-        return (
-          <Panel
-            header={
-              <React.Fragment>
-                {header.map(item => (
-                  <React.Fragment>{item}</React.Fragment>
-                ))}
-              </React.Fragment>
-            }
-          >
-            {typeof newContent === "string" && newContent}
-            {typeof newContent !== "string" &&
-              newContent.map(item => <React.Fragment>{item}</React.Fragment>)}
-            {/* {content.props.children.props.children.map(item => (
-              <React.Fragment>{item}</React.Fragment>
-            ))} */}
-          </Panel>
-        )
+        if (!newContent) {
+          return (
+            <Panel
+              header={
+                <React.Fragment>
+                  {header.map(item => (
+                    <React.Fragment>{item}</React.Fragment>
+                  ))}
+                </React.Fragment>
+              }
+            />
+          )
+        } else if (newContent) {
+          return (
+            <Panel
+              header={
+                <React.Fragment>
+                  {header.map(item => (
+                    <React.Fragment>{item}</React.Fragment>
+                  ))}
+                </React.Fragment>
+              }
+            >
+              {typeof newContent === "string" && newContent}
+              {typeof newContent !== "string" &&
+                newContent.map(item => <React.Fragment>{item}</React.Fragment>)}
+            </Panel>
+          )
+        } else {
+          return null
+        }
       })}
     </Collapse>
   )
