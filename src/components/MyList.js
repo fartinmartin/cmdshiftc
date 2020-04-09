@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import Collapse from "rc-collapse/lib/Collapse"
 import React, { useState } from "react"
-import { Button, jsx } from "theme-ui"
+import { Button, Flex, jsx } from "theme-ui"
 const Panel = Collapse.Panel
+
+const Number = ({ children }) => <div sx={{ mr: ".5em" }}>{children}. </div>
 
 export default ({ children }) => {
   // create an array of strings the length of children
@@ -22,10 +24,19 @@ export default ({ children }) => {
   }
 
   return (
-    <React.Fragment>
-      <Button onClick={handleClick}>Toggle</Button>
+    <div sx={{ position: "relative" }}>
+      <Button
+        onClick={handleClick}
+        sx={{
+          position: "absolute",
+          left: "-1rem",
+          transform: "translateX(-100%)",
+        }}
+      >
+        Toggle
+      </Button>
       <Collapse activeKey={allOpen ? activeKeys : [""]} onChange={onChange}>
-        {children.map(item => {
+        {children.map((item, index) => {
           const itemType = typeof item.props.children
           let header = []
           let content
@@ -48,7 +59,12 @@ export default ({ children }) => {
             // this is for cases in which the step has components (i.e. Key) && has children steps
             return (
               <Panel
-                header={<React.Fragment>{item.props.children}</React.Fragment>}
+                header={
+                  <Flex sx={{ flexGrow: "1" }}>
+                    <Number>{index + 1}</Number>
+                    {item.props.children}
+                  </Flex>
+                }
                 disabled
               />
             )
@@ -59,11 +75,12 @@ export default ({ children }) => {
             return (
               <Panel
                 header={
-                  <React.Fragment>
+                  <Flex sx={{ flexGrow: "1" }}>
+                    <Number>{index + 1}</Number>
                     {header.map(item => (
                       <React.Fragment>{item}</React.Fragment>
                     ))}
-                  </React.Fragment>
+                  </Flex>
                 }
               />
             )
@@ -72,11 +89,12 @@ export default ({ children }) => {
             return (
               <Panel
                 header={
-                  <React.Fragment>
+                  <Flex sx={{ flexGrow: "1" }}>
+                    <Number>{index + 1}</Number>
                     {header.map(item => (
                       <React.Fragment>{item}</React.Fragment>
                     ))}
-                  </React.Fragment>
+                  </Flex>
                 }
               >
                 {typeof newContent === "string" && newContent}
@@ -91,6 +109,6 @@ export default ({ children }) => {
           }
         })}
       </Collapse>
-    </React.Fragment>
+    </div>
   )
 }

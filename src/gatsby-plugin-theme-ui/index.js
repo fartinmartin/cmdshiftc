@@ -1,4 +1,5 @@
 import prism from "@theme-ui/prism/presets/theme-ui"
+import "../css/rc-collapse.css"
 require("typeface-open-sans")
 
 export default {

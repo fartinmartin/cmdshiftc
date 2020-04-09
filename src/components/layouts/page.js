@@ -2,7 +2,6 @@
 import { MDXProvider } from "@mdx-js/react"
 import { Link } from "gatsby"
 import Collapse from "rc-collapse"
-import "rc-collapse/assets/index.css"
 import { Helmet } from "react-helmet"
 import { Flex, jsx } from "theme-ui"
 import Container from "./../Container"
@@ -13,6 +12,7 @@ import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Prop from "./../Prop"
 import Value from "./../Value"
+
 const Panel = Collapse.Panel
 
 const shortcodes = {

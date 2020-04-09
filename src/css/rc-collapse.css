@@ -1,0 +1,108 @@
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* main */
+.rc-collapse {
+  --text: var(--theme-ui-colors-text);
+  --bg: var(--theme-ui-colors-muted);
+  background-color: var(--bg);
+  border-left: 4px solid #f6f6f6;
+}
+
+.rc-collapse-anim-active {
+  transition: height 0.2s ease-out;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* header */
+.rc-collapse > .rc-collapse-item > .rc-collapse-header {
+  display: flex;
+  align-items: center;
+
+  /* rearrange arrow order */
+  width: 100%;
+  flex-direction: row-reverse;
+  justify-content: start;
+
+  padding: 10px 16px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* arrow/"expandIcon" default state */
+.rc-collapse > .rc-collapse-item > .rc-collapse-header .arrow {
+  display: inline-block;
+  content: "\20";
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-right: 4px solid #666;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* arrow/"expandIcon" open state */
+.rc-collapse > .rc-collapse-item-active > .rc-collapse-header .arrow {
+  position: relative;
+  top: 2px;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid #666;
+  margin-right: 6px;
+}
+
+/* extra/optional thing on the right */
+.rc-collapse > .rc-collapse-item > .rc-collapse-header .rc-collapse-extra {
+  margin: 0 16px 0 auto;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* disabled header */
+.rc-collapse > .rc-collapse-item-disabled > .rc-collapse-header {
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+.rc-collapse > .rc-collapse-item-disabled > .rc-collapse-header > .arrow {
+  opacity: 0;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* content */
+.rc-collapse-content {
+  overflow: hidden;
+  color: var(--text);
+  margin-right: 32px;
+  margin-left: 20px;
+  /* padding: 16px 16px 16px 16px; */
+  /* background-color: #fafafa; */
+}
+
+.rc-collapse-item-disabled > .rc-collapse-content {
+  display: none;
+}
+
+.rc-collapse-content > .rc-collapse-content-box {
+  padding-left: 14px;
+  border-left: 4px solid #f6f6f6;
+}
+
+.rc-collapse-content-inactive {
+  display: none;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* margin fixes (eg for component children) */
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* old */
+/* .rc-collapse > .rc-collapse-item {
+  border-top: 1px solid #d9d9d9;
+} */
+/* .rc-collapse > .rc-collapse-item:first-child {
+  border-top: none;
+} */
+/* .rc-collapse-item:last-child > .rc-collapse-content {
+  border-radius: 0 0 3px 3px;
+} */
