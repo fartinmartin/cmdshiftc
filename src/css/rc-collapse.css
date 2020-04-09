@@ -20,7 +20,7 @@
   /* rearrange arrow order */
   width: 100%;
   flex-direction: row-reverse;
-  justify-content: start;
+  justify-content: flex-start;
 
   padding: 10px 16px;
   color: var(--text);
