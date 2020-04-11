@@ -18,7 +18,7 @@ export default ({ children, variant, csx }) => {
   }
 
   if (!variant) {
-    return <span sx={baseStyles}>{children}</span>
+    return <kbd sx={baseStyles}>{children}</kbd>
   } else if (variant === "interactive") {
     return (
       <kbd
