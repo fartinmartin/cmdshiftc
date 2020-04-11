@@ -4,7 +4,9 @@ import React, { useState } from "react"
 import { Button, Flex, jsx } from "theme-ui"
 const Panel = Collapse.Panel
 
-const Number = ({ children }) => <div sx={{ mr: ".5em" }}>{children}. </div>
+const Number = ({ children }) => (
+  <div sx={{ mr: ".5em", opacity: ".5" }}>{children}. </div>
+)
 
 export default ({ children }) => {
   // create an array of strings the length of children
@@ -31,9 +33,17 @@ export default ({ children }) => {
           position: "absolute",
           left: "-1rem",
           transform: "translateX(-100%)",
+
+          p: 0,
+          background: "none",
+          color: "text",
+          fontSize: 0,
+          maxWidth: "10ch",
+          textAlign: "right",
+          cursor: "pointer",
         }}
       >
-        Toggle
+        Show/Hide extra steps
       </Button>
       <Collapse activeKey={allOpen ? activeKeys : [""]} onChange={onChange}>
         {children.map((item, index) => {

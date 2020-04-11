@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 
 export default ({ children, variant, csx }) => {
   const baseStyles = {
+    fontFamily: "body",
     display: "inline-block",
     px: 2,
     py: 1,
@@ -20,7 +21,7 @@ export default ({ children, variant, csx }) => {
     return <span sx={baseStyles}>{children}</span>
   } else if (variant === "interactive") {
     return (
-      <span
+      <kbd
         sx={{
           ...baseStyles,
 
@@ -35,7 +36,7 @@ export default ({ children, variant, csx }) => {
         }}
       >
         {children}
-      </span>
+      </kbd>
     )
   } else {
     return null
