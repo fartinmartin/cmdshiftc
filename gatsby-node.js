@@ -25,10 +25,13 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  // GraphQL for POSTS only
+  // GraphQL query sorted by date and filtered by directory (`/posts` only)
   const postQuery = await graphql(`
     query {
-      allMdx(filter: { fileAbsolutePath: { regex: "/src/posts/" } }) {
+      allMdx(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        filter: { fileAbsolutePath: { regex: "/src/posts/" } }
+      ) {
         edges {
           node {
             id

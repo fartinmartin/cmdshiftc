@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Helmet } from "react-helmet"
 import { Flex, jsx, Styled } from "theme-ui"
+import TOC from "../TOC"
 import Container from "./../Container"
 import Footer from "./../Footer"
 import Header from "./../Header"
@@ -15,7 +16,7 @@ import Value from "./../Value"
 
 const shortcodes = { Link, Key, Prop, Value, MenuTree, ol: MyList }
 
-export default ({ data: { mdx }, children }) => (
+export default ({ data: { mdx }, children, location }) => (
   <Styled.root>
     <Flex
       sx={{
@@ -40,6 +41,7 @@ export default ({ data: { mdx }, children }) => (
       >
         <Container sx={{ maxWidth: "55ch" }}>
           <h1>{mdx.frontmatter.title}</h1>
+          <TOC headings={mdx.headings} location={location} />
         </Container>
 
         <MDXProvider components={shortcodes}>
@@ -64,6 +66,13 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+      }
+      headings {
+        depth
+        value
+      }
+      fields {
+        slug
       }
     }
   }
