@@ -16,7 +16,6 @@ const Panel = Collapse.Panel
 
 const shortcodes = {
   Link,
-
   Prop,
   Value,
   MenuTree,
@@ -52,7 +51,6 @@ export default ({ children }) => (
           <MDXProvider components={shortcodes}>{children}</MDXProvider>
         </Container>
       </main>
-      <Container>{/* <Test /> */}</Container>
       <Footer
         sx={{
           width: "100%",
