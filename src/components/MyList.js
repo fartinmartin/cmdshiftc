@@ -106,7 +106,10 @@ export default ({ children }) => {
                     <Number>{index + 1}</Number>
                     <span>
                       {header.map(item => (
-                        <React.Fragment>{item}</React.Fragment>
+                        <React.Fragment>
+                          {item}
+                          {console.log(item)}
+                        </React.Fragment>
                       ))}
                     </span>
                   </Flex>
