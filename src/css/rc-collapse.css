@@ -75,6 +75,8 @@
   color: var(--text);
   margin-right: 32px;
   margin-left: 20px;
+  /* 👇 fixes clipping of <kbd> elements */
+  padding: 1px 0;
   /* padding: 16px 16px 16px 16px; */
   /* background-color: #fafafa; */
 }
