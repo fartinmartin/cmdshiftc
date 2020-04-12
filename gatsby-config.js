@@ -24,7 +24,7 @@ module.exports = {
           posts: require.resolve("./src/components/layouts/post.js"),
           default: require.resolve("./src/components/layouts/page.js"),
         },
-        remarkPlugins: [require("remark-slug")],
+        remarkPlugins: [require("remark-slug"), require("remark-kbd")],
       },
     },
     `gatsby-plugin-theme-ui`,

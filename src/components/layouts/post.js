@@ -8,13 +8,12 @@ import TOC from "../TOC"
 import Container from "./../Container"
 import Footer from "./../Footer"
 import Header from "./../Header"
-import Key from "./../Key"
 import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Prop from "./../Prop"
 import Value from "./../Value"
 
-const shortcodes = { Link, Key, Prop, Value, MenuTree, ol: MyList }
+const shortcodes = { Link, Prop, Value, MenuTree, ol: MyList }
 
 export default ({ data: { mdx }, children, location }) => (
   <Styled.root>

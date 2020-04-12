@@ -7,7 +7,6 @@ import { Flex, jsx, Styled } from "theme-ui"
 import Container from "./../Container"
 import Footer from "./../Footer"
 import Header from "./../Header"
-import Key from "./../Key"
 import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Prop from "./../Prop"
@@ -17,7 +16,7 @@ const Panel = Collapse.Panel
 
 const shortcodes = {
   Link,
-  Key,
+
   Prop,
   Value,
   MenuTree,
@@ -49,7 +48,7 @@ export default ({ children }) => (
           flex: "1 1 auto",
         }}
       >
-        <Container>
+        <Container sx={{ maxWidth: "55ch" }}>
           <MDXProvider components={shortcodes}>{children}</MDXProvider>
         </Container>
       </main>

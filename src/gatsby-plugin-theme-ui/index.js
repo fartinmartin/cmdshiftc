@@ -48,6 +48,9 @@ export default {
       lineHeight: "body",
       fontWeight: "body",
       fontSize: 2,
+      "& kbd": {
+        variant: "kbd.primary",
+      },
     },
     h1: {
       color: "text",
@@ -118,6 +121,22 @@ export default {
     },
     img: {
       maxWidth: "100%",
+    },
+  },
+  kbd: {
+    primary: {
+      fontFamily: "body",
+      display: "inline-block",
+      px: 2,
+      py: 1,
+      // verticalAlign: 1,
+      mx: 1,
+      fontSize: 0,
+      color: "#000",
+      bg: "muted",
+      borderRadius: `.125em`,
+      boxShadow: `inset 0.25px 0.25px 0 0.25px hsl(0, 0%, 100%),
+        0 0 0 1px hsl(0, 0%, 85%), 1px 1px 0 1px hsl(0, 0%, 98%);`,
     },
   },
   breakpoints: ["40em", "56em", "64em"],
