@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import Collapse from "rc-collapse/lib/Collapse"
 import React, { useState } from "react"
-import { Button, Flex, jsx } from "theme-ui"
+import { Flex, jsx } from "theme-ui"
+import ShyGuy from "./ShyGuy"
 const Panel = Collapse.Panel
 
 const Number = ({ children }) => (
@@ -31,24 +32,17 @@ export default ({ children }) => {
 
   return (
     <div sx={{ position: "relative" }}>
-      <Button
-        onClick={handleToggleAll}
+      <Flex
         sx={{
+          alignItems: "center",
+          height: "43px",
           position: "absolute",
           left: "-1rem",
           transform: "translateX(-100%)",
-
-          p: 0,
-          background: "none",
-          color: "text",
-          fontSize: 0,
-          maxWidth: "10ch",
-          textAlign: "right",
-          cursor: "pointer",
         }}
       >
-        Show/Hide extra steps
-      </Button>
+        <ShyGuy onClick={handleToggleAll} allOpen={allOpen} />
+      </Flex>
       <Collapse activeKey={allOpen ? activeKeys : [""]} onChange={onChange}>
         {children.map((item, index) => {
           const itemChildren = item.props.children
