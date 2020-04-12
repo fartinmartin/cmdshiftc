@@ -4,7 +4,7 @@
   --text: var(--theme-ui-colors-text);
   --bg: var(--theme-ui-colors-muted);
   background-color: var(--bg);
-  border-left: 4px solid #f6f6f6;
+  /* border-left: 4px solid #f6f6f6; */
 }
 
 .rc-collapse-anim-active {
@@ -79,6 +79,12 @@
   padding: 1px 0;
   /* padding: 16px 16px 16px 16px; */
   /* background-color: #fafafa; */
+}
+.rc-collapse-content ol {
+  list-style: lower-alpha;
+  margin: 0;
+  padding-left: 1.5em;
+  /* font-size: 0.9em; */
 }
 
 .rc-collapse-item-disabled > .rc-collapse-content {

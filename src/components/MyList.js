@@ -5,30 +5,34 @@ import { Button, Flex, jsx } from "theme-ui"
 const Panel = Collapse.Panel
 
 const Number = ({ children }) => (
-  <div sx={{ mr: ".5em", opacity: ".5" }}>{children}. </div>
+  <div sx={{ mr: ".5em", opacity: ".5", textAlign: "right" }}>{children}. </div>
 )
 
 export default ({ children }) => {
-  // create an array of strings the length of children
+  // TODO: handle lists with only one item/child/step
+  // TODO: refractor header logic into Header component
+
+  // 1. create an array of strings the length of children...
   let allKeys = []
   children.forEach((item, index) => allKeys.push(index.toString()))
 
-  // use array to set all "keys" to active (rc-collapse lingo)
+  // 2. use that array to set all rc-collapse "keys" to active
   const [activeKeys, setActiveKeys] = useState(allKeys)
   const [allOpen, setAllOpen] = useState(true)
 
-  function handleClick() {
+  function handleToggleAll() {
     setAllOpen(!allOpen)
   }
 
-  function onChange(event) {
-    setActiveKeys(event)
+  // onChange returns an array of rc-collapse "keys" (eg ["1", "2", "4"])
+  function onChange(newKeys) {
+    setActiveKeys(newKeys)
   }
 
   return (
     <div sx={{ position: "relative" }}>
       <Button
-        onClick={handleClick}
+        onClick={handleToggleAll}
         sx={{
           position: "absolute",
           left: "-1rem",
@@ -47,26 +51,29 @@ export default ({ children }) => {
       </Button>
       <Collapse activeKey={allOpen ? activeKeys : [""]} onChange={onChange}>
         {children.map((item, index) => {
-          const itemType = typeof item.props.children
+          const itemChildren = item.props.children
           let header = []
           let content
-          let newContent
 
           // collect children (if present) inside an array/variable to be used later
-          if (itemType !== "string") {
-            item.props.children.forEach(child => {
+          if (typeof itemChildren !== "string") {
+            // will we need Array.from() ????
+            itemChildren.forEach(child => {
               if (typeof child === "string") {
                 header.push(child)
               } else if (child.props.mdxType !== "ul") {
                 header.push(child)
               } else if (child.props.mdxType === "ul") {
-                content = child
-                newContent = content.props.children.props.children
+                if (Array.isArray(child.props.children)) {
+                  content = child.props.children
+                } else {
+                  content = child.props.children.props.children
+                }
               } else {
                 return null
               }
             })
-          } else if (itemType === "string") {
+          } else if (typeof itemChildren === "string") {
             // this is for cases in which the step has components (i.e. Value) && has children steps
             return (
               <Panel
@@ -79,10 +86,53 @@ export default ({ children }) => {
                 disabled
               />
             )
+          } else {
+            return null
           }
 
-          if (!newContent) {
+          if (!content) {
             // this is for cases in which the step has components (i.e. <Value />) but no children
+            return (
+              <Panel
+                header={
+                  <Flex sx={{ flexGrow: "1" }}>
+                    <Number>{index + 1}</Number>
+                    <span>{header.map(item => ({ item }))}</span>
+                  </Flex>
+                }
+              />
+            )
+          } else if (content) {
+            // this is for cases in which the step has components (i.e. <Value />) and/or has children steps
+
+            // in order to correctly wrap out content we need to check is composition
+            let renderedContent
+
+            if (typeof content === "string") {
+              // if theres only one step AND it is a string
+              renderedContent = (
+                <li>
+                  <span>{content}</span>
+                </li>
+              )
+            } else if (content.every(item => typeof item !== "string")) {
+              // if content is an object with NO strings
+              renderedContent = (
+                <React.Fragment>
+                  <span>{content}</span>
+                </React.Fragment>
+              )
+            } else {
+              // if content is an object with some strings
+              renderedContent = (
+                <React.Fragment>
+                  <li>
+                    <span>{content}</span>
+                  </li>
+                </React.Fragment>
+              )
+            }
+
             return (
               <Panel
                 header={
@@ -95,31 +145,8 @@ export default ({ children }) => {
                     </span>
                   </Flex>
                 }
-              />
-            )
-          } else if (newContent) {
-            // this is for cases in which the step has components (i.e. <Value />) and/or has children steps
-            return (
-              <Panel
-                header={
-                  <Flex sx={{ flexGrow: "1" }}>
-                    <Number>{index + 1}</Number>
-                    <span>
-                      {header.map(item => (
-                        <React.Fragment>
-                          {item}
-                          {console.log(item)}
-                        </React.Fragment>
-                      ))}
-                    </span>
-                  </Flex>
-                }
               >
-                {typeof newContent === "string" && newContent}
-                {typeof newContent !== "string" &&
-                  newContent.map(item => (
-                    <React.Fragment>{item}</React.Fragment>
-                  ))}
+                <ol>{renderedContent}</ol>
               </Panel>
             )
           } else {
