@@ -52,6 +52,7 @@ export default ({ children }) => {
           let content
           let newContent
 
+          // collect children (if present) inside an array/variable to be used later
           if (itemType !== "string") {
             item.props.children.forEach(child => {
               if (typeof child === "string") {
@@ -66,13 +67,13 @@ export default ({ children }) => {
               }
             })
           } else if (itemType === "string") {
-            // this is for cases in which the step has components (i.e. Key) && has children steps
+            // this is for cases in which the step has components (i.e. Value) && has children steps
             return (
               <Panel
                 header={
                   <Flex sx={{ flexGrow: "1" }}>
                     <Number>{index + 1}</Number>
-                    {item.props.children}
+                    <span>{item.props.children}</span>
                   </Flex>
                 }
                 disabled
@@ -81,29 +82,33 @@ export default ({ children }) => {
           }
 
           if (!newContent) {
-            // this is for cases in which the step has components (i.e. <Key />) but no children
+            // this is for cases in which the step has components (i.e. <Value />) but no children
             return (
               <Panel
                 header={
                   <Flex sx={{ flexGrow: "1" }}>
                     <Number>{index + 1}</Number>
-                    {header.map(item => (
-                      <React.Fragment>{item}</React.Fragment>
-                    ))}
+                    <span>
+                      {header.map(item => (
+                        <React.Fragment>{item}</React.Fragment>
+                      ))}
+                    </span>
                   </Flex>
                 }
               />
             )
           } else if (newContent) {
-            // this is for cases in which the step has components (i.e. <Key />) and/or has children steps
+            // this is for cases in which the step has components (i.e. <Value />) and/or has children steps
             return (
               <Panel
                 header={
                   <Flex sx={{ flexGrow: "1" }}>
                     <Number>{index + 1}</Number>
-                    {header.map(item => (
-                      <React.Fragment>{item}</React.Fragment>
-                    ))}
+                    <span>
+                      {header.map(item => (
+                        <React.Fragment>{item}</React.Fragment>
+                      ))}
+                    </span>
                   </Flex>
                 }
               >

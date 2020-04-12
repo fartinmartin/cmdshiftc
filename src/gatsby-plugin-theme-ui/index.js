@@ -130,7 +130,7 @@ export default {
       px: 2,
       py: 1,
       // verticalAlign: 1,
-      mx: 1,
+      // mx: 1,
       fontSize: 0,
       color: "#000",
       bg: "muted",
