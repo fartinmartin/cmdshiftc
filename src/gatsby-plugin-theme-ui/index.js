@@ -139,6 +139,25 @@ export default {
         0 0 0 1px hsl(0, 0%, 85%), 1px 1px 0 1px hsl(0, 0%, 98%);`,
     },
   },
+  button: {
+    reset: {
+      border: "none",
+      margin: 0,
+      padding: 0,
+      width: "auto",
+      overflow: "visible",
+      background: "transparent",
+      color: "inherit",
+      font: "inherit",
+      lineHeight: "normal",
+      fontSmoothing: "inherit",
+      appearance: "none",
+      "&::-moz-focus-inner": {
+        border: 0,
+        padding: 0,
+      },
+    },
+  },
   breakpoints: ["40em", "56em", "64em"],
   useColorSchemeMediaQuery: true,
 }
