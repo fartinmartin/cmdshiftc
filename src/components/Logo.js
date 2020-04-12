@@ -13,21 +13,23 @@ export default ({ variant }) => {
     },
   }
   if (!variant) {
-    const fS = t => `${t.fontSize[1]}px !important`
     return (
-      <div>
-        <kbd sx={{ fontSize: fS, mr: 2, ...interactiveStyles }}>⌘ Cmd</kbd>
-        <kbd sx={{ fontSize: fS, mr: 2, ...interactiveStyles }}>⇧ Shift</kbd>
-        <kbd sx={{ fontSize: fS, m: 0, ...interactiveStyles }}>C</kbd>
+      <div sx={{ fontSize: "14px !important" }}>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>
+          ⌘ Cmd
+        </kbd>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>
+          ⇧ Shift
+        </kbd>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>C</kbd>
       </div>
     )
   } else if (variant === "small") {
-    const fS = t => `${t.fontSize[1]}px !important`
     return (
       <div>
-        <kbd sx={{ fontSize: fS, mr: 2, ...interactiveStyles }}>⌘</kbd>
-        <kbd sx={{ fontSize: fS, mr: 2, ...interactiveStyles }}>⇧</kbd>
-        <kbd sx={{ fontSize: fS, m: 0, ...interactiveStyles }}>C</kbd>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>⌘</kbd>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>⇧</kbd>
+        <kbd sx={{ fontSize: "14px !important", ...interactiveStyles }}>C</kbd>
       </div>
     )
   } else {
