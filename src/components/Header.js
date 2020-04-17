@@ -6,13 +6,21 @@ import Container from "./Container"
 import Logo from "./Logo"
 
 export default props => (
-  <header>
-    <Container py="4">
+  <header
+    sx={{
+      position: "fixed",
+      width: "100%",
+      bg: "white",
+      zIndex: "100",
+    }}
+  >
+    <Container>
       <Flex
         sx={{
           alignItems: "center",
           justifyContent: "center",
           position: "relative",
+          height: "6em",
         }}
       >
         <Link

@@ -36,15 +36,28 @@ export default ({ data: { mdx }, children, location }) => (
         sx={{
           width: "100%",
           flex: "1 1 auto",
+          mt: "6em",
         }}
       >
         <Container sx={{ maxWidth: "55ch", position: "relative" }}>
           <h1>{mdx.frontmatter.title}</h1>
-          <TOC headings={mdx.headings} location={location} />
+          <img
+            src={mdx.frontmatter.featuredImage.publicURL}
+            alt={mdx.frontmatter.title}
+            sx={{
+              width: "100%",
+            }}
+          />
+          <small>
+            <a href={mdx.frontmatter.featuredLink}>
+              {mdx.frontmatter.featuredCaption}
+            </a>
+          </small>
         </Container>
 
         <MDXProvider components={shortcodes}>
           <Container sx={{ maxWidth: "55ch" }}>
+            <TOC headings={mdx.headings} location={location} />
             <MDXRenderer>{mdx.body}</MDXRenderer>
           </Container>
         </MDXProvider>
@@ -65,6 +78,11 @@ export const pageQuery = graphql`
       body
       frontmatter {
         title
+        featuredCaption
+        featuredLink
+        featuredImage {
+          publicURL
+        }
       }
       headings {
         depth

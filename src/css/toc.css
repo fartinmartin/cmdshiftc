@@ -1,0 +1,7 @@
+.toc li[data-heading-depth="2"] {
+  margin-top: 0.75em;
+}
+.toc li[data-heading-depth="3"] {
+  margin-left: 1.5em;
+  margin-top: 0.25em;
+}

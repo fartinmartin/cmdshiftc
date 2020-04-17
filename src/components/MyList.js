@@ -37,7 +37,7 @@ export default ({ children }) => {
           alignItems: "center",
           height: "43px",
           position: "absolute",
-          left: "-1rem",
+          right: "-2rem",
           transform: "translateX(-100%)",
         }}
       >

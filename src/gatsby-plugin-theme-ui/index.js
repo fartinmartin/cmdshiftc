@@ -65,6 +65,7 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 4,
+      marginTop: 4,
     },
     h3: {
       color: "text",
@@ -72,6 +73,7 @@ export default {
       lineHeight: "heading",
       fontWeight: "heading",
       fontSize: 3,
+      marginTop: 5,
     },
     h4: {
       color: "text",
