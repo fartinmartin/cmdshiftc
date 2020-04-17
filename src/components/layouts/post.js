@@ -38,7 +38,7 @@ export default ({ data: { mdx }, children, location }) => (
           flex: "1 1 auto",
         }}
       >
-        <Container sx={{ maxWidth: "55ch" }}>
+        <Container sx={{ maxWidth: "55ch", position: "relative" }}>
           <h1>{mdx.frontmatter.title}</h1>
           <TOC headings={mdx.headings} location={location} />
         </Container>

@@ -10,9 +10,12 @@ export default props => (
           edges {
             node {
               id
-              excerpt
               frontmatter {
                 title
+                excerpt
+                featuredImage {
+                  publicURL
+                }
               }
               fields {
                 slug
@@ -41,27 +44,36 @@ export default props => (
                 mb: 4,
               }}
             >
-              <Styled.h2
+              <Link
+                to={post.fields.slug}
                 sx={{
-                  m: 0,
+                  color: "inherit",
+                  textDecoration: "none",
+                  ":hover,:focus": {
+                    color: "primary",
+                    textDecoration: "underline",
+                  },
                 }}
               >
-                <Link
-                  to={post.fields.slug}
+                {post.frontmatter.featuredImage ? (
+                  <img
+                    src={post.frontmatter.featuredImage.publicURL}
+                    alt={post.frontmatter.title}
+                    sx={{
+                      maxWidth: "100%",
+                    }}
+                  />
+                ) : null}
+                <Styled.h2
                   sx={{
-                    color: "inherit",
-                    textDecoration: "none",
-                    ":hover,:focus": {
-                      color: "primary",
-                      textDecoration: "underline",
-                    },
+                    m: 0,
                   }}
                 >
                   {post.frontmatter.title}
-                </Link>
-              </Styled.h2>
-              <small sx={{ fontWeight: "bold" }}>{post.date}</small>
-              <Styled.p>{post.excerpt}</Styled.p>
+                </Styled.h2>
+                <small sx={{ fontWeight: "bold" }}>{post.date}</small>
+                <Styled.p>{post.frontmatter.excerpt}</Styled.p>
+              </Link>
               <Divider />
             </li>
           ))}
