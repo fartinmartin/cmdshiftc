@@ -68,7 +68,7 @@ export default ({ children }) => {
               }
             })
           } else if (typeof itemChildren === "string") {
-            // this is for cases in which the step has components (i.e. Value) && has children steps
+            // this is for cases in which the step has components (i.e. Value) && has no? children steps
             return (
               <Panel
                 header={
@@ -93,12 +93,12 @@ export default ({ children }) => {
                     <Number>{index + 1}</Number>
                     <span>
                       {header.map(item => {
-                        console.log(item)
                         return item
                       })}
                     </span>
                   </Flex>
                 }
+                disabled
               />
             )
           } else if (content) {
