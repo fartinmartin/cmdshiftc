@@ -138,7 +138,7 @@ With our three sides made, organized, masked, and placed into our
 Master composition, we can now construct our cube's middle section!
 Just a reminder, there are three solutions
 
-## The simple way: 3D Layers
+## The simple way
 
 \[GIF of final creation\]
 
@@ -215,3 +215,65 @@ example however, (here, in the top section) we see <Prop>Side 01</Prop>, then
 ![](./media/image1.gif)
 
 What to do, what to do? 🤔
+
+## The true to 2D way
+
+[GIF of final creation]
+
+### Intro + some caveats
+
+This is because it’s not a cube—it just looks like one!
+
+Instead, each face is a composition that is being scaled from one of its sides. Think of them as either left aligned or right aligned shapes. To complete the illusion of two sides of a cube making a 3D turn, as each face scales, they move out, and then back in.
+
+![](./media/image5.gif)
+
+This setup is not only a convincing 3D turn that respects the 2D design language of the original (!) but it also allows us to sequence the sides in whatever order we like. These advantages, however, will cost us in complexity! This solution will be slightly more complicated to build and to control. Totes worth it, though.
+
+So, to reiterate, at it simplest this solution consists of two steps for each face:
+Non-uniformly scale your layer from one side.
+As it scales, move your layer out from the center, and then back in.
+
+### Steps
+
+Let's just focus on one "level". And more specifically, on one "face" of the "level" at a time. So, first we need to non-uniformly scale our layer:
+
+1.  First, let’s duplicate our Master composition.
+    - Rename the duplicate composition to Non-Uniformly Scaled Comps (or maybe something a little less nerdy) and double click to open it up.
+2.  Set your anchor point to the edge of your initial "face" layer.
+    - Select your initial "face" layer.
+    - Hit Y on your keyboard.
+    - Click and drag your layer's anchor point towards the left side of your layer.
+    - Hold Command and it will snap to your layer's edge.
+3.  Set an initial Scale keyframe.
+    - Select your layer. Hit S on your keyboard.
+    - Click the stopwatch.
+4.  Set another Scale keyframe, this time with non-uniform proportions.
+    - Move forward 20 frames (Shift + Page Down twice)
+    - Unlink your scale proportions by clicking the link icon next to the blue text that says 100%, 100%.
+    - Change the first value to 0%.
+5.  Play back your animation and it now scales down to the left—we're halfway there!
+6.  Now, set your anchor point to the edge of your second "face" layer.
+    - This time the anchor point should be on the right.
+7.  Apply the scale animation to the second “face” layer:
+    - Copy your initial "face" layer's scale animation to this layer and then reverse them (Right Click > Keyframe Assistant > Time-reverse Keyframes).
+
+Now our two layers scale non-uniformly in sync. But we need to move them out as they scale.
+
+1.  Set start and end keyframes for the X Position of each "face" layer. These keyframes should be in sync with the previous Scale keyframes you made.
+2.  In the middle of all these keyframes move the initial "face" layer to the left 100px and the second "face" layer to the right 100px.
+3.  Oop, now there is a gap as they scale! Not to worry.
+4.  In the middle keyframe adjust your scale values of each layer so that they meet in the middle of the gap.
+5.  Now add some easing to the start and end keyframes and set the middle keyframes to auto-bezier. Should be pretty close.
+
+### Debrief
+
+Much better, right? But we could get more precise, right? And we could do this “non-destructively” so that we could swap in any video, animation, or image in any of the sides? Yeah, a little rig, that would be neat...
+
+## The precise way
+
+### Intro + some caveats
+
+### Steps
+
+### Debrief
