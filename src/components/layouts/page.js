@@ -9,6 +9,7 @@ import Footer from "./../Footer"
 import Header from "./../Header"
 import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
+import Note from "./../Note"
 import Prop from "./../Prop"
 import Value from "./../Value"
 
@@ -22,6 +23,7 @@ const shortcodes = {
   Collapse,
   Panel,
   ol: MyList,
+  Note,
 }
 
 export default ({ children }) => (

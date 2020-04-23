@@ -91,8 +91,12 @@ export default ({ children }) => {
                 header={
                   <Flex sx={{ flexGrow: "1" }}>
                     <Number>{index + 1}</Number>
-                    {console.log(typeof header, header)}
-                    <span>{header.map(item => ({ item }))}</span>
+                    <span>
+                      {header.map(item => {
+                        console.log(item)
+                        return item
+                      })}
+                    </span>
                   </Flex>
                 }
               />

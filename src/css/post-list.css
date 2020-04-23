@@ -1,0 +1,8 @@
+#post-list li a:hover {
+  text-decoration: none;
+}
+
+#post-list li a:hover h2 {
+  text-decoration: underline;
+  text-decoration-color: var(--theme-ui-colors-primary, #07c);
+}

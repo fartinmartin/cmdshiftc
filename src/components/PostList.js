@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import { graphql, Link, StaticQuery } from "gatsby"
 import { Divider, jsx, Styled } from "theme-ui"
+import "./../css/post-list.css"
 
 export default props => (
   <StaticQuery
@@ -36,6 +37,7 @@ export default props => (
             py: 4,
             maxWidth: "50ch",
           }}
+          id="post-list"
         >
           {posts.map(({ node: post }) => (
             <li
