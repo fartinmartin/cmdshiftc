@@ -59,7 +59,7 @@ export default ({ data: { mdx }, children, location }) => (
         <MDXProvider components={shortcodes}>
           <Container sx={{ maxWidth: "55ch" }}>
             <TOC headings={mdx.headings} location={location} />
-            <MDXRenderer>{mdx.body}</MDXRenderer>
+            <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
           </Container>
         </MDXProvider>
       </main>

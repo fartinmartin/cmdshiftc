@@ -7,7 +7,12 @@ export default props => (
   <StaticQuery
     query={graphql`
       query PostList {
-        allMdx(filter: { fileAbsolutePath: { regex: "/src/posts/" } }) {
+        allMdx(
+          filter: {
+            fileAbsolutePath: { regex: "/src/posts/" }
+            fields: { slug: { ne: "/tut/test" } }
+          }
+        ) {
           edges {
             node {
               id
