@@ -31,7 +31,7 @@ export default props => (
         >
           <Logo />
         </Link>
-        <div sx={{ position: "absolute", right: "0" }}>
+        <div sx={{ position: "absolute", right: "0", opacity: 0 }}>
           <Link
             to="/key"
             sx={{

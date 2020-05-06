@@ -5,14 +5,15 @@ export default ({ children, variant }) => {
   const baseStyles = {
     display: "flex",
     alignItems: "center",
-    bg: "muted",
+    bg: "#dcdcdc26",
     color: "text",
     fontStyle: "italic",
-    px: 2,
-    py: 1,
+    p: 3,
+    my: 2,
     borderRadius: `.125em`,
     fontSize: 1,
-    lineHeight: 1,
+    lineHeight: 1.2,
+    ml: "-1.5rem",
   }
   if (!variant) {
     return <div sx={baseStyles}>{children}</div>

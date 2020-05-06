@@ -9,8 +9,6 @@ export default ({ headings, location }) => (
     sx={{
       position: "sticky",
       top: "8em",
-      transform: "translateX(-100%)",
-      width: "max-content",
       height: 0,
       px: 4,
     }}

@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Helmet } from "react-helmet"
 import { Flex, jsx, Styled } from "theme-ui"
+import PostMeta from "../PostMeta.js"
 import TOC from "../TOC"
 import Container from "./../Container"
 import Footer from "./../Footer"
@@ -57,9 +58,20 @@ export default ({ data: { mdx }, children, location }) => (
         </Container>
 
         <MDXProvider components={shortcodes}>
-          <Container sx={{ maxWidth: "55ch" }}>
+          <Container
+            sx={{
+              display: "grid",
+              gridTemplateColumns: "1fr 55ch 1fr",
+              // gridGap: "32px",
+            }}
+          >
             <TOC headings={mdx.headings} location={location} />
-            <MDXRenderer frontmatter={mdx.frontmatter}>{mdx.body}</MDXRenderer>
+            <div sx={{ padding: 4 }}>
+              <MDXRenderer frontmatter={mdx.frontmatter}>
+                {mdx.body}
+              </MDXRenderer>
+            </div>
+            <PostMeta mdx={mdx} />
           </Container>
         </MDXProvider>
       </main>
@@ -84,6 +96,10 @@ export const pageQuery = graphql`
         featuredImage {
           publicURL
         }
+        metaBegTime
+        metaMedTime
+        metaDifTime
+        metaTools
       }
       headings {
         depth
