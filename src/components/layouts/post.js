@@ -11,6 +11,7 @@ import Header from "./../Header"
 import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Note from "./../Note"
+import PostFooter from "./../PostFooter"
 import ProjectFile from "./../ProjectFile"
 import Prop from "./../Prop"
 import Tabs from "./../Tabs"
@@ -86,6 +87,7 @@ export default ({ data: { mdx }, children, location }) => (
           </Container>
         </MDXProvider>
       </main>
+      <PostFooter />
       <Footer
         sx={{
           width: "100%",
