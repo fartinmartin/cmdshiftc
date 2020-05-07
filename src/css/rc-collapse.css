@@ -87,6 +87,11 @@
   /* font-size: 0.9em; */
 }
 
+.rc-collapse-content ol ::marker {
+  color: #838383;
+  font-size: 0.875em;
+}
+
 .rc-collapse-item-disabled > .rc-collapse-content {
   display: none;
 }
