@@ -26,8 +26,10 @@ class Tab extends Component {
     }
 
     return (
-      <li className={className} onClick={onClick}>
-        {label}
+      <li>
+        <button className={className} onClick={onClick}>
+          {label}
+        </button>
       </li>
     )
   }

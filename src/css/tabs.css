@@ -1,5 +1,6 @@
 .tab-list {
   padding-left: 0;
+  list-style: none;
   margin-top: 5rem;
   display: flex;
   justify-content: space-between;
@@ -7,14 +8,27 @@
 
 .tab-list-item:hover {
   border-bottom: 3px solid gray;
+  opacity: 1 !important;
 }
 
 .tab-list-item {
   display: inline-block;
   list-style: none;
   cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  /* button reset */
+  background: none;
+  padding: 0;
+  padding-bottom: 2px;
+  border: none;
+  font-size: inherit;
 }
 
 .tab-list-active {
   border-bottom: 3px solid #000;
+}
+
+.tab-list-item:not(.tab-list-active) {
+  opacity: 0.5;
 }
