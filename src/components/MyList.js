@@ -19,7 +19,7 @@ export default ({ children }) => {
 
   // 2. use that array to set all rc-collapse "keys" to active
   const [activeKeys, setActiveKeys] = useState(allKeys)
-  const [allOpen, setAllOpen] = useState(true)
+  const [allOpen, setAllOpen] = useState(false)
 
   function handleToggleAll() {
     setAllOpen(!allOpen)

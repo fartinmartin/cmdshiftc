@@ -6,7 +6,7 @@ export default ({ children, variant }) => {
     display: "inline-flex",
     alignItems: "center",
     bg: "muted",
-    color: "text",
+    color: "#000",
     px: 2,
     py: 1,
     borderRadius: `.125em`,

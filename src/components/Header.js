@@ -10,7 +10,7 @@ export default props => (
     sx={{
       position: "fixed",
       width: "100%",
-      bg: "white",
+      bg: "header",
       zIndex: "100",
     }}
   >
@@ -31,8 +31,8 @@ export default props => (
         >
           <Logo />
         </Link>
-        <div sx={{ position: "absolute", right: "0", opacity: 0 }}>
-          <Link
+        <div sx={{ position: "absolute", right: "0" }}>
+          {/* <Link
             to="/key"
             sx={{
               textDecoration: "none",
@@ -42,7 +42,7 @@ export default props => (
             <span role="img" aria-label="A key">
               🔑
             </span>
-          </Link>
+          </Link> */}
           <ColorMode />
         </div>
       </Flex>
