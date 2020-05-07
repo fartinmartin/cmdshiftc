@@ -5,7 +5,6 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import { Helmet } from "react-helmet"
 import { Flex, jsx, Styled } from "theme-ui"
 import PostMeta from "../PostMeta.js"
-import TOC from "../TOC"
 import Container from "./../Container"
 import Footer from "./../Footer"
 import Header from "./../Header"
@@ -13,9 +12,18 @@ import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Note from "./../Note"
 import Prop from "./../Prop"
+import Tabs from "./../Tabs"
 import Value from "./../Value"
 
-const shortcodes = { Link, Prop, Value, Note, MenuTree, ol: MyList }
+const shortcodes = {
+  Link,
+  Prop,
+  Value,
+  Note,
+  MenuTree,
+  ol: MyList,
+  Tabs,
+}
 
 export default ({ data: { mdx }, children, location }) => (
   <Styled.root>
@@ -65,8 +73,9 @@ export default ({ data: { mdx }, children, location }) => (
               // gridGap: "32px",
             }}
           >
-            <TOC headings={mdx.headings} location={location} />
-            <div sx={{ padding: 4 }}>
+            {/* <TOC headings={mdx.headings} location={location} /> */}
+            <div></div>
+            <div sx={{ px: 4 }}>
               <MDXRenderer frontmatter={mdx.frontmatter}>
                 {mdx.body}
               </MDXRenderer>
