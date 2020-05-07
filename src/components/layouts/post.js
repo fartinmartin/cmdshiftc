@@ -11,6 +11,7 @@ import Header from "./../Header"
 import MenuTree from "./../MenuTree"
 import MyList from "./../MyList"
 import Note from "./../Note"
+import ProjectFile from "./../ProjectFile"
 import Prop from "./../Prop"
 import Tabs from "./../Tabs"
 import Value from "./../Value"
@@ -23,6 +24,7 @@ const shortcodes = {
   MenuTree,
   ol: MyList,
   Tabs,
+  ProjectFile,
 }
 
 export default ({ data: { mdx }, children, location }) => (
