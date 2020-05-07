@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { graphql, Link, StaticQuery } from "gatsby"
+import React from "react"
 import { Divider, jsx, Styled } from "theme-ui"
 import "./../css/post-list.css"
 
@@ -44,45 +45,48 @@ export default props => (
           }}
           id="post-list"
         >
-          {posts.map(({ node: post }) => (
-            <li
-              key={post.id}
-              sx={{
-                mb: 4,
-              }}
-            >
-              <Link
-                to={post.fields.slug}
+          {posts.map(({ node: post }, index) => (
+            <React.Fragment>
+              <li
+                key={post.id}
                 sx={{
-                  color: "inherit",
-                  textDecoration: "none",
-                  ":hover,:focus": {
-                    color: "primary",
-                    textDecoration: "underline",
-                  },
+                  mb: 4,
                 }}
               >
-                {post.frontmatter.featuredImage ? (
-                  <img
-                    src={post.frontmatter.featuredImage.publicURL}
-                    alt={post.frontmatter.title}
-                    sx={{
-                      maxWidth: "100%",
-                    }}
-                  />
-                ) : null}
-                <Styled.h2
+                <Link
+                  to={post.fields.slug}
                   sx={{
-                    m: 0,
+                    color: "inherit",
+                    textDecoration: "none",
+                    ":hover,:focus": {
+                      color: "primary",
+                      textDecoration: "underline",
+                    },
                   }}
                 >
-                  {post.frontmatter.title}
-                </Styled.h2>
-                <small sx={{ fontWeight: "bold" }}>{post.date}</small>
-                <Styled.p>{post.frontmatter.excerpt}</Styled.p>
-              </Link>
-              <Divider />
-            </li>
+                  {post.frontmatter.featuredImage ? (
+                    <img
+                      src={post.frontmatter.featuredImage.publicURL}
+                      alt={post.frontmatter.title}
+                      sx={{
+                        maxWidth: "100%",
+                      }}
+                    />
+                  ) : null}
+                  <Styled.h2
+                    sx={{
+                      m: 0,
+                      marginTop: 2,
+                    }}
+                  >
+                    {post.frontmatter.title}
+                  </Styled.h2>
+                  <small sx={{ fontWeight: "bold" }}>{post.date}</small>
+                  <Styled.p>{post.frontmatter.excerpt}</Styled.p>
+                </Link>
+              </li>
+              {index < posts.length - 1 ? <Divider my={4} /> : null}
+            </React.Fragment>
           ))}
         </ul>
       )
