@@ -16,6 +16,7 @@ export default props => (
       fontSize: 0,
     }}
     alt={`${props.allOpen ? "Hide" : "Reveal"} sub-steps.`}
+    className="shy-guy"
   >
     {props.allOpen ? (
       <React.Fragment>

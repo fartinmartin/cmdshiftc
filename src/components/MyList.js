@@ -6,10 +6,19 @@ import ShyGuy from "./ShyGuy"
 const Panel = Collapse.Panel
 
 const Number = ({ children }) => (
-  <div sx={{ mr: ".5em", opacity: ".5", textAlign: "right" }}>{children}. </div>
+  <div
+    sx={{
+      mr: ".5em",
+      opacity: ".5",
+      textAlign: "right",
+      fontFamily: "monospace",
+    }}
+  >
+    {children}.{" "}
+  </div>
 )
 
-export default ({ children }) => {
+export default ({ children, className }) => {
   // TODO: handle lists with only one item/child/step
   // TODO: refractor header logic into Header component
 
@@ -31,7 +40,7 @@ export default ({ children }) => {
   }
 
   return (
-    <div sx={{ position: "relative" }}>
+    <div sx={{ position: "relative" }} className={className}>
       <Flex
         sx={{
           alignItems: "center",

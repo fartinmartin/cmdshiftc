@@ -29,12 +29,22 @@ about solving this problem. If you think that's unnecessary (totally
 fair!) feel free to skip around, just know that each solution will start
 from the initial setup found in the introduction.
 
+The three solutions are:
+
+  <ol class="hide-shy-guy">
+    <li><strong>Beginner: </strong>Rotating 3D layers</li>
+    <li><strong>Intermediate: </strong>Non-uniformly scaling 2D layers</li>
+    <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
+  </ol>
+
 <ProjectFile>If you wish to skip the entire introduction, you may grab the
 starter file <a href="#🤡">here</a>.</ProjectFile>
 
 <Tabs>
 
   <div label="🧬 Introduction">
+
+<ProjectFile><a href="#here-we-go">Skip</a> to the introduction steps!</ProjectFile>
 
 ## The breakdown
 
@@ -55,43 +65,37 @@ section; a center, a right, and a left!
 Each side of each section is playing its own animation, so, with
 3 sections × 3 sides that makes 9 animations in total.
 
-In this article I won't be covering the animations themselves, just
-the cube that presents them, but taking a moment to think about their
+**In this article I won't be covering the animations themselves, just
+the cube that presents them**, but taking a moment to think about their
 application will help us build out our initial setup.
 
 What do I mean by that?
 
-Well, we could imagine that each one of these
-animations is not actually a dismembered body part of some being. There
-isn't an animation of _just_ a head, or torso, or legs. Instead,
-somewhere exists an animation of a complete, fully connected,
-character—we are just seeing 1/3rd masked out and placed in either the top, center, or bottom section.
+Well, we could imagine that each one of these animations is not actually a dismembered body part of some being. There isn't an animation of _just_ a head, or torso, or legs.
+
+Instead, somewhere exists an animation of a complete, fully connected character—we are just seeing ⅓ masked out and placed in either the top, center, or bottom section.
 
 ![A potetntial look at what the full-animation could be](./media/full-animation.gif)
 
-This is important because it determines how we will set up our project.
-But before we get set up, let's simplify our problem a little, ya?
+This is important because it determines how we will set up our project. This means that each side of our sections will have the same height and width as the entire cube BUT we'll only be seeing ⅓ masked out.
+
+Okay, we may be getting ahead of ourselves. Before we get set up, let's simplify our problem a little, ya?
 
 ### Okay, let's simplify
 
-Whoa, three sections with three sides each totalling nine animations
-spinning around randomly is a lot to comprehend!
+Whoa, 3 sections with 3 sides each (totalling 9 animations) spinning around randomly is a lot to comprehend!
 
-Luckily, if we look at our example again, we can see that each section
-(top, middle, and bottom) are performing nearly identical animations.
+Luckily, if we look at our example again, we can see that each section (top, middle, and bottom) are performing nearly identical animations. They all *move* like the animation below, they just have different artwork inside each side.
 
 ![](./media/image2.gif)
 
-So, for now, let's just forget about two of them, deal? Great. Once we
-solve for one of the sections we can duplicate it (and offset the
-timing) to achieve the final result.
+So, for now, let's just forget about two of them, deal? Great.
+
+Once we solve for one of the sections we can duplicate it (and offset the timing) to achieve the final result.
 
 ### Let's get set up!
 
-Just so we are on the same page, to start with I am going to be recreating the middle
-section. Feel free to start elsewhere, but know that some of the steps
-will be specifically referring to the middle section and its properties
-(its <Prop variant="ae">Position</Prop>, <Prop variant="ae">Anchor Point</Prop>, etc.)
+Just so we are on the same page, to start with I am going to be recreating the middle section. Feel free to start elsewhere, but know that some of the steps will be specifically referring to the middle section and its properties (its <Prop variant="ae">Position</Prop>, <Prop variant="ae">Anchor Point</Prop>, etc.)
 
 First things first, we need to create the three compositions that will house
 our potential animations. For the sake of this article they will just
@@ -99,12 +103,12 @@ contain a background and a static number, but later you can drop
 whatever you like inside.
 
 As we talked about [above](#the-breakdown) these animations are of full
-characters so while they look to be only 1/3rd of the cube's side they
+characters so while they look to be only ⅓ of the cube's side they
 should really be 100% of the cube's side, also known as a square, hehe!
 
 <ProjectFile>Reminder: if you'd like, you can also grab a starter file <a href="#🤡">here</a>.</ProjectFile>
 
-Otherwise, here we go!
+Here we go!
 
 1.  Make a square composition named <Prop>Side 01</Prop>.
     - Its dimensions should be <Value>1080x1080px</Value>
@@ -140,104 +144,135 @@ Otherwise, here we go!
     - With a framerate of <Value>30fps</Value>
     - And a duration of <Value>5</Value> seconds
     - In your Project Panel, make a folder called <Prop>Main</Prop> and drag + drop our new <Prop>Master</Prop> composition into it.
-7.  Drag + drop all three <Prop>Side 0</Prop> compositions into the new Master composition.
+7.  Drag + drop all three <Prop>Side 0_</Prop> compositions into the new Master composition.
 8.  Mask each layer such that only the middle ⅓ of each is visible.
     - Select the <Prop>Side 01</Prop> layer and double click the Rectangle Tool to create a mask that covers the whole layer.
-    - Edit the mask to only reveal 1/3rd of the layer:
+    - Edit the mask to only reveal ⅓ of the layer:
+    - In the Layer Panel, twirl down the newly made <Prop>Mask 1</Prop> on the <Prop>Side 01</Prop> layer.
+    - Click on the blue <Prop>Shape…</Prop> text next to <Prop>Mask Path</Prop>.
+    - Do some math.
+        <Note>
+          Note: in order to reveal the middle third of this layer (which is 1080px tall) the <>Top</> of the mask should be ⅓ of the way down (<>360</>) and the bottom should be ⅔ of the way down (<>720</>).
+        </Note>
+    - Copy <Prop>Mask 1</Prop> from the <Prop>Side 01</Prop> layer and paste it on the other two <Prop>Side 0_</Prop> layers.
 9.  Ya done! 🎉
     - For now...
 
-With our three sides made, organized, masked, and placed into our
-Master composition, we can now construct our cube's middle section!
-Just a reminder, there are three solutions
+The middle section of our cube is complete! Now that we have everything organized we can start animating.
+
+Just a reminder, from this <Prop>Master</Prop> composition we will create 3 solutions:
+
+  <ol class="hide-shy-guy">
+    <li><strong>Beginner: </strong>Rotating 3D layers</li>
+    <li><strong>Intermediate: </strong>Non-uniformly scaling 2D layers</li>
+    <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
+  </ol>
+
   </div>
   <div label="🥚 Beginner">
 
+<ProjectFile><a href="#building-our-faux-3d-box">Skip</a> to the beginner steps!</ProjectFile>
+
 ## The simple way
-
-\[GIF of final creation\]
-
-### Intro + some caveats
-
-In my first attempt to solve this I created a partial cube with 3D
-layers and had them rotate around that cube's center point.
-
-\[GIF of "Custom View 1"?\]
-
-While this results in a neat animation it doesn't match the original in
-a couple of ways. First, and most importantly, it doesn't respect the
-original 2D design. Second, it is limited in the order in which each
-side is revealed---we'll get more in depth on this limitation in a bit.
-
-It is however, relatively quick to set up and is simple to control,
-especially in comparison to the other two solutions. If that's your
-style read on ahead, if not, skip to one of the other solutions!
-
-### \[Steps\]
-
-1.  Duplicate the Master composition from the starter file and rename it to 3D Layers.
-2.  Inside of the 3D Layers composition, we need to offset each of our layer's Anchor Points:
-    - To get a better sense of what is happening in 3D space, in the Composition Panel, switch to Custom View 1
-    - Select all three Side 0\_ layers, turn them into 3D layers by clicking the 3D Layer switch
-    - Hit A on your keyboard to reveal their Anchor Points
-    - We want to place their Anchor Points exactly at the center point of this imaginary cube that we are creating. That means we need to take the "depth" of this cube and divide it in half. Lucky for us, we know the "depth"---it's the same size as our layer's height or width---so, 1080/2 = 540. TL;DM: the Z value of each layer's anchor point should be 540
-3.  Rotate each side on their Y axis into their "correct" position.
-    - Select <Prop>Side 01</Prop>, hit R on your keyboard and rotate on the Y axis 90°
-    - Select <Prop>Side 03</Prop>, hit R on your keyboard and rotate on the Y axis -90°
-4.  Create a Null layer to be able to control all three layers as a group:
-    - Keyboard shortcut: Shift + Option + Command + Y
-    - Rename it Controller
-    - Turn it 3D
-    - Parent all three Side 0\_ layers to the new Controller Null layer
-5.  Animate the Controller Null's rotation on the Y axis.
-    - In the Composition Panel, you may return to the "Active Camera" view
-    - Select the Controller Null layer and hit R on your keyboard
-    - On frame 10 set a keyframe for the Y Rotation
-    - Hit Shift + Command + Right Arrow twice to move forward 20 frames and set a keyframe at 90
-    - Hit Shift + Command + Right Arrow three times to move forward 30 frames and repeat those keyframes, this time in reverse (first 90, then 30 frames later, 0).
-    - You've got a loop!
-6.  Now, to complete this animation you could...
-    - Place your three complete character animations inside of the Side 0\_ compositions.
-    - Repeat (or duplicate!) this process for the top and bottom sections.
-    - Offset each section's Controller Null's rotation animations.
-    - Add some easing and...
 
 ![](./media/image4.gif)
 
-👈 You might end up with something like this.
+### ...with some caveats
 
-Okay, neat, but there are some problems. The biggest of which is that
-this solution does not respect the 2D design language of the original!
-(Worth repeating.)
+What you see above is what we'll be making in this "beginner" solution.
 
-Also, you can see through the cube at its corners while it rotates (this
-[[can sort of be
-solved]{.underline}](https://proloststore.com/products/edc), but
-probably not worth it because... this solution does not respect the 2D
-design language of the original!)
+Before we start, let's acknowledge that this does not 100% match our inspiration. Yes, it's a 3D exquisite corpse, BUT there are 2 things that clash with the original:
 
-### \[Debrief\]
+  <ol class="hide-shy-guy">
+    <li>It doesn't respect the 2D design the original.</li>
+    <li>It is limited in the order in which each side is revealed.</li>
+  </ol>
 
-Also, we cannot break the order in which we reveal each face. That order
-is built into the section of cube that we built with 3D layers (<Prop>Side 01</Prop>, then <Prop>Side 02</Prop>, then <Prop>Side 03</Prop>---or in reverse). In our
-example however, (here, in the top section) we see <Prop>Side 01</Prop>, then
+We'll go more in depth on these limitation in a bit, but for now ~hEEd ThoSe WaRnIngS~!
 
-<Prop>Side 02</Prop>, then
-<Prop>Side 03</Prop>, then
-<Prop>Side 01</Prop> without seeing
-<Prop>Side 02</Prop> again!
+This is however, relatively quick to set up and is simple to control,
+especially in comparison to the other two solutions. If that's your
+style read on ahead, if not, skip to one of the other solutions!
 
-![](./media/image1.gif)
+### ...and some context
 
-What to do, what to do? 🤔
+What we are about to build is a faux 3D object inside of After Effects.
+
+The idea here is to place our 3 sides in 3D space in a box-like formation. By using math and a little helper layer we will accurately position them around an imaginary "center point" that we will rotate them around as a group:
+
+[GIF explaining that idea]
+
+Alright, here we go for real:
+
+
+### Building our faux 3D box
+
+1.  Duplicate the Master composition from the starter file and rename it to <Prop>3D Layers</Prop>.
+2.  Inside of the <Prop>3D Layers</Prop> composition, we need to offset each of our <Prop>Side 0_</Prop> layer's <Prop>Anchor Points</Prop> in Z-space by ½ their width:
+    - To get a better sense of what is happening in 3D space, in the Composition Panel, switch to <Value>Custom View 1</Value>
+    - Select all three <Prop>Side 0_</Prop> layers, turn them into 3D layers by clicking the 3D Layer switch
+    - Hit ||A|| on your keyboard to reveal their <Prop>Anchor Points</Prop>
+    - We want to place their <Prop>Anchor Points</Prop> exactly at the center point of this imaginary cube that we are creating (for us that means <Value>540</Value> in Z-space!)
+      <Note>
+        How'd we get that? We need to take the "depth" of this cube and divide it in half. Lucky for us, we know the "depth"—it's the same size as our <>Side 0_</> layer's width—so, 1080/2 = 540. TL;DM: the Z value of each layer's anchor point should be 540
+      </Note>
+3.  Rotate each <Prop>Side 0_</Prop> layer on its Y axis into the "correct" position.
+    - Select <Prop>Side 01</Prop>, hit R on your keyboard and rotate on the Y axis <Value>90°</Value>
+    - Select <Prop>Side 03</Prop>, hit R on your keyboard and rotate on the Y axis <Value>-90°</Value>
+4.  Create a Null layer to be able to control all three layers as a group:
+    - Keyboard shortcut: ||Shift|| + ||Option|| + ||Command|| + ||Y||
+    - Rename it to <Prop>Controller</Prop>
+    - Turn it into a 3D layer
+    - Parent all three <Prop>Side 0_</Prop> layers to the new <Prop>Controller</Prop> Null layer
+5.  Animate the <Prop>Controller</Prop> Null's rotation on the Y axis.
+    - In the <Prop>Composition Panel</Prop>, you may return to the <Value>Active Camera</Value> view
+    - Select the <Prop>Controller</Prop> Null layer and hit ||R|| on your keyboard
+    - On frame 10 set a keyframe for the Y Rotation at <Value>0</Value>
+    - Hit ||Shift|| + ||Command|| + ||→|| twice to move forward 20 frames and set a keyframe at <Value>90</Value>
+    - Hit ||Shift|| + ||Command|| + ||→|| three times to move forward 30 frames and repeat those keyframes, this time in reverse (first 90, then 30 frames later, 0).
+    - You've got a loop!
+6.  Now, to complete this animation you could...
+    - Place your three complete character animations inside of the <Prop>Side 0_</Prop> compositions.
+    - Repeat (or duplicate!) this process for the top and bottom sections.
+    - Offset each section's <Prop>Controller</Prop> Null's rotation animations.
+
+### Okay, neat
+
+Okay, neat, but there are those problems we mentioned before:
+
+  <ol class="hide-shy-guy">
+    <li>It doesn't respect the 2D design the original.</li>
+    <li>It is limited in the order in which each side is revealed.</li>
+  </ol>
+
+Regarding #1: you can see through the cube at its corners while it rotates (this [can sort of be solved](https://proloststore.com/products/edc), but probably not  worth it because... this solution does not respect the 2D design language of the original!)
+
+Regarding #2: we cannot break the order in which we reveal each face. That order
+is built into the section of cube that we built with 3D layers (<Prop>Side 01</Prop>, then <Prop>Side 02</Prop>, then <Prop>Side 03</Prop>---or in reverse). In our example however, (here, in the top section) we see <Prop>Side 01</Prop>, then <Prop>Side 02</Prop>, then <Prop>Side 03</Prop>, then <Prop>Side 01</Prop> without seeing <Prop>Side 02</Prop> again!
+
+![The section's sides: left, center, right](./media/sides.gif)
+
+What to do, what to do? 🤔 Weellll... if you're up for it you could try one of the other solutions:
+
+  <ol class="hide-shy-guy">
+    <li><strong>Intermediate: </strong>Non-uniformly scaling 2D layers</li>
+    <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
+  </ol>
+
   </div>
   <div label="🐣 Intermediate">
+
+<ProjectFile><a href="#non-uniformly-scaling-our-2d-layers">Skip</a> to the intermediate steps!</ProjectFile>
 
 ## The true to 2D way
 
 [GIF of final creation]
 
-### Intro + some caveats
+### ...with some caveats
+
+This isn't super percise, there will be moments of eye-balling...
+
+### ...and some context
 
 This is because it’s not a cube—it just looks like one!
 
@@ -251,12 +286,12 @@ So, to reiterate, at it simplest this solution consists of two steps for each fa
 Non-uniformly scale your layer from one side.
 As it scales, move your layer out from the center, and then back in.
 
-### Steps
+### Non-uniformly scaling our 2D layers
 
 Let's just focus on one "level". And more specifically, on one "face" of the "level" at a time. So, first we need to non-uniformly scale our layer:
 
 1.  First, let’s duplicate our Master composition.
-    - Rename the duplicate composition to Non-Uniformly Scaled Comps (or maybe something a little less nerdy) and double click to open it up.
+    - Rename the duplicate composition to Non-uniformly scaled Comps (or maybe something a little less nerdy) and double click to open it up.
 2.  Set your anchor point to the edge of your initial "face" layer.
     - Select your initial "face" layer.
     - Hit Y on your keyboard.
@@ -289,6 +324,8 @@ Much better, right? But we could get more precise, right? And we could do this �
   </div>
 
   <div label="🐔 Advanced">
+
+<ProjectFile><a href="#building-our-faux-3d-box">Skip</a> to the advanced steps!</ProjectFile>
 
 ## The precise way
 

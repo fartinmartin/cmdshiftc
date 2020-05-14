@@ -80,11 +80,16 @@
   /* padding: 16px 16px 16px 16px; */
   /* background-color: #fafafa; */
 }
+
 .rc-collapse-content ol {
   list-style: lower-alpha;
   margin: 0;
   padding-left: 1.5em;
   /* font-size: 0.9em; */
+}
+
+.hide-shy-guy .shy-guy {
+  display: none;
 }
 
 .rc-collapse-content ol ::marker {
