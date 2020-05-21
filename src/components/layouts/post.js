@@ -2,6 +2,7 @@
 import { MDXProvider } from "@mdx-js/react"
 import { graphql, Link } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import AnchorLink from "react-anchor-link-smooth-scroll"
 import { Helmet } from "react-helmet"
 import { Flex, jsx, Styled } from "theme-ui"
 import PostMeta from "../PostMeta.js"
@@ -26,6 +27,7 @@ const shortcodes = {
   ol: MyList,
   Tabs,
   ProjectFile,
+  AnchorLink,
 }
 
 export default ({ data: { mdx }, children, location }) => (

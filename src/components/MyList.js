@@ -27,10 +27,11 @@ export default ({ children, className }) => {
   children.forEach((item, index) => allKeys.push(index.toString()))
 
   // 2. use that array to set all rc-collapse "keys" to active
-  const [activeKeys, setActiveKeys] = useState(allKeys)
+  const [activeKeys, setActiveKeys] = useState([])
   const [allOpen, setAllOpen] = useState(false)
 
   function handleToggleAll() {
+    allOpen ? setActiveKeys([]) : setActiveKeys(allKeys)
     setAllOpen(!allOpen)
   }
 
@@ -52,7 +53,7 @@ export default ({ children, className }) => {
       >
         <ShyGuy onClick={handleToggleAll} allOpen={allOpen} />
       </Flex>
-      <Collapse activeKey={allOpen ? activeKeys : [""]} onChange={onChange}>
+      <Collapse activeKey={activeKeys} onChange={onChange}>
         {children.map((item, index) => {
           const itemChildren = item.props.children
           let header = []

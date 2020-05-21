@@ -1,9 +1,7 @@
 ---
 title: 'Breakdown: Three ways to make a "3D" exquisite corpse'
 date: 2020-04-21
-excerpt: "I recently came across this animation by Andreas Bjørn Hansen (an
-animator at BUCK) and was curious how he created the illusion of a 3D
-cube to fit the piece's 2D design aesthetic."
+excerpt: "Learn how to control 2D layers to create a stylized 3D exquisite corpse rig based on an animation by Andreas Bjørn Hansen."
 featuredImage: "./media/image3.gif"
 featuredCaption: "Customers by Andreas Bjørn Hansen"
 featuredLink: "https://dribbble.com/shots/3198216-Customers"
@@ -20,14 +18,14 @@ at BUCK) and was curious how he created the illusion of a 3D cube to fit
 the piece's 2D design aesthetic.
 
 I soon found out it is deceptively simple in it's presentation. In this
-article I am going to explain three ways that I was able to recreate
-this animation, each solution increasing in difficulty but at the same
+article I am going to explain three ways that I was able to recreate the rotating cube animation*, each solution increasing in difficulty but at the same
 time allowing for more control.
+
+*I won't be covering the animations themselves, just the cube that spins and reveals them!
 
 The hope is by following each solution you can get a sense of how I went
 about solving this problem. If you think that's unnecessary (totally
-fair!) feel free to skip around, just know that each solution will start
-from the initial setup found in the introduction.
+fair!) feel free to skip around.
 
 The three solutions are:
 
@@ -37,9 +35,12 @@ The three solutions are:
     <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
   </ol>
 
+The introduction will walk you through the steps to create the master file that the three solutions start from. Note:
+
 <ProjectFile>If you wish to skip the entire introduction, you may grab the
 starter file <a href="#🤡">here</a>.</ProjectFile>
 
+<div id="tabs"></div>
 <Tabs>
 
   <div label="🧬 Introduction">
@@ -102,7 +103,7 @@ our potential animations. For the sake of this article they will just
 contain a background and a static number, but later you can drop
 whatever you like inside.
 
-As we talked about [above](#the-breakdown) these animations are of full
+As we talked about <AnchorLink offset="96" href="#the-breakdown">above</AnchorLink> these animations are of full
 characters so while they look to be only ⅓ of the cube's side they
 should really be 100% of the cube's side, also known as a square, hehe!
 
@@ -167,6 +168,10 @@ Just a reminder, from this <Prop>Master</Prop> composition we will create 3 solu
     <li><strong>Intermediate: </strong>Non-uniformly scaling 2D layers</li>
     <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
   </ol>
+
+<AnchorLink offset="96" href="#tabs">
+  Now that you've completed the master file, you're ready to jump in! Head back to the top to choose your path!
+</AnchorLink>
 
   </div>
   <div label="🥚 Beginner">
@@ -259,6 +264,10 @@ What to do, what to do? 🤔 Weellll... if you're up for it you could try one of
     <li><strong>Advanced: </strong>Making a rig with Master Properties for more accuracy</li>
   </ol>
 
+<AnchorLink offset="96" href="#tabs">
+  Head back to the top to check out the intermediate or advanced steps!
+</AnchorLink>
+
   </div>
   <div label="🐣 Intermediate">
 
@@ -321,6 +330,11 @@ Now our two layers scale non-uniformly in sync. But we need to move them out as 
 ### Debrief
 
 Much better, right? But we could get more precise, right? And we could do this “non-destructively” so that we could swap in any video, animation, or image in any of the sides? Yeah, a little rig, that would be neat...
+
+<AnchorLink offset="96" href="#tabs">
+  Head back to the top to check out the advanced steps!
+</AnchorLink>
+
   </div>
 
   <div label="🐔 Advanced">
