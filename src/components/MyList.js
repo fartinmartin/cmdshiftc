@@ -38,6 +38,14 @@ export default ({ children, className }) => {
   // onChange returns an array of rc-collapse "keys" (eg ["1", "2", "4"])
   function onChange(newKeys) {
     setActiveKeys(newKeys)
+    // attempt to flip ShyGuy switch if user clicks ALL steps individually
+    // this requires allKeys array to NOT include and steps that are disabled
+    // ... i think
+    if (newKeys.length === allKeys.length) {
+      setAllOpen(true)
+    } else if (newKeys.length === 0) {
+      setAllOpen(false)
+    }
   }
 
   return (
