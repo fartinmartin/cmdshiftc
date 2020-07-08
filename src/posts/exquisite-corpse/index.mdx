@@ -250,7 +250,7 @@ Okay, neat, but there are those problems we mentioned before:
     <li>It is limited in the order in which each side is revealed.</li>
   </ol>
 
-Regarding #1: you can see through the cube at its corners while it rotates (this [can sort of be solved](https://proloststore.com/products/edc), but probably not  worth it because... this solution does not respect the 2D design language of the original!)
+Regarding #1: you can see through the cube at its corners while it rotates (this [can sort of be solved](https://proloststore.com/products/edc), but probably not worth it because... this solution does not respect the 2D design language of the original!)
 
 Regarding #2: we cannot break the order in which we reveal each face. That order
 is built into the section of cube that we built with 3D layers (<Prop>Side 01</Prop>, then <Prop>Side 02</Prop>, then <Prop>Side 03</Prop>---or in reverse). In our example however, (here, in the top section) we see <Prop>Side 01</Prop>, then <Prop>Side 02</Prop>, then <Prop>Side 03</Prop>, then <Prop>Side 01</Prop> without seeing <Prop>Side 02</Prop> again!
@@ -275,6 +275,7 @@ What to do, what to do? 🤔 Weellll... if you're up for it you could try one of
 
 ## The true to 2D way
 
+<!--
 [GIF of final creation]
 
 ### ...with some caveats
@@ -286,6 +287,7 @@ This isn't super percise, there will be moments of eye-balling...
 This is because it’s not a cube—it just looks like one!
 
 Instead, each face is a composition that is being scaled from one of its sides. Think of them as either left aligned or right aligned shapes. To complete the illusion of two sides of a cube making a 3D turn, as each face scales, they move out, and then back in.
+-->
 
 ![](./media/image5.gif)
 
@@ -343,15 +345,33 @@ Much better, right? But we could get more precise, right? And we could do this �
 
 ## The precise way
 
-lorem , right? But we could get more precise, right? And we could do this s“non-destructively” so that we could swap in any video, animation, or image in any of the sides? Yeah, a little rig, that would be neat...
+![](./media/rig.gif)
 
-### Intro + some caveats
+What if we wanted to be pixel perfect in our animations? What if we needed to easily swap out our artwork? What if we wanted to show off how much we knew about After Effects?
 
-, right? But we could get more precise, right? And we could do this “non-destructively” so that we could swap in any video, animation, or image in any of the sides? Yeah, a little rig, that would be neat...
+In all of those scenarios we would want to create a "rig" that streamlines our animation workflow. 🤠
 
-### Steps
-, right? But we could get more precise, right? And we could do this “non-destructively” so that we could swap in any video, animation, or image in any of the sides? Yeah, a little rig, that would be neat...
+### The rig
 
-### Debrief
+Our rig will only contain one "level" of the cube. We will expose two inputs via Master Properties: one to choose which composition to start on and another to choose which composition to reveal. This way we can reuse the rig for all three "levels" of the cube and pick _any_ composition to reveal not limited by the cubes legitimate "construction".
+
+Here is a quick diagram of our composition structure:
+
+![](./media/rig-comps.png)
+
+<ol class="hide-shy-guy">
+  <li>We have our 9 animations inside of a "Face" composition.</li>
+  <li>Our "Face" composition acts as a container that will allow us to choose which of our 9 animations we see.</li>
+  <li>We place two instances of our "Face" composition inside our "Rig" composition. Allowing us animate our container yet display any two animations we choose.</li>
+  <li>We place three instances of our "Rig" composition into our "Main" comp, allowing us to build out our whole cube.</li>
+</ol>
+
+Shall we get started then?
+
+1.  First, let’s duplicate our Master composition.
+    - Rename the duplicate composition to The Rig 😎 and double click to open it up.
+2.  Do another thing...
+
+
   </div>
 </Tabs>
